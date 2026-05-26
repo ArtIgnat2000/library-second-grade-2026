@@ -281,3 +281,64 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('📚 Детская библиотека загружена!');
 });
+
+
+// Hamburger Menu
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const menuDropdown = document.getElementById('menuDropdown');
+const resetBtn = document.getElementById('resetBtn');
+const themeToggle = document.getElementById('themeToggle');
+
+// Переключение меню
+hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('active');
+    menuDropdown.classList.toggle('active');
+});
+
+// Закрытие меню при клике вне его
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.hamburger-menu')) {
+        hamburgerBtn.classList.remove('active');
+        menuDropdown.classList.remove('active');
+    }
+});
+
+// Обнуление всех книг
+resetBtn.addEventListener('click', () => {
+    if (confirm('Вы уверены, что хотите обнулить количество всех прочитанных книг?')) {
+        books.forEach(book => {
+            book.count = 0;
+        });
+        saveBooks();
+        renderBooks();
+        updateStats();
+        
+        // Закрыть меню
+        hamburgerBtn.classList.remove('active');
+        menuDropdown.classList.remove('active');
+        
+        // Показать уведомление
+        alert('✅ Все книги обнулены!');
+    }
+});
+
+// Переключение темы День/Ночь
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    
+    // Сохранить выбор темы в localStorage
+    const isDark = document.body.classList.contains('dark-theme');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    
+    // Обновить текст кнопки
+    themeToggle.innerHTML = isDark ? '☀️ Светлая тема' : '🌙 Темная тема';
+});
+
+// Загрузка сохраненной темы при запуске
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeToggle.innerHTML = '☀️ Светлая тема';
+    }
+});
