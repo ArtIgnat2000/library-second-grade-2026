@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Библиотека. Иду во 2 класс</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>📚 Библиотека. Иду во 2 класс</h1>
+        <button id="themeToggle" class="theme-toggle" aria-label="Переключить тему" title="Переключить тему"></button>
+        <!-- <p>Только книги из рекомендованного списка для чтения с детьми.</p> -->
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#klassicheskie">Классика</a></li>
+            <li><a href="#sovyetskie">Советские</a></li>
+            <li><a href="#zarubezhnye">Зарубежные</a></li>
+            <li><a href="#pro-zhivotnyh">Про животных</a></li>
+        </ul>
+    </nav>
+
+    <!-- Секция для Классики -->
+    <section id="klassicheskie">
+        <div>
+            <h2>Классическая детская литература</h2>
+            <p>Произведения русских классиков для начальных классов.</p>
+            <ul>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/pushkin_skazka_o_mjortvoj_carevne_i_o_semi_bogatyryakh" target="_blank" class="book-link">Сказка о мертвой царевне и семи богатырях - Александр Сергеевич Пушкин</a>
+                        <button class="read-btn" data-book="Сказка о мертвой царевне и семи богатырях">📖</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-item">
+                        <a href="https://skazki.rustih.ru/lev-tolstoj-tri-medvedya/" target="_blank" class="book-link">Три медведя - Лев Николаевич Толстой</a>
+                        <button class="read-btn" data-book="Три медведя">📖</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/lev-tolstoj-kotenok" target="_blank" class="book-link">Котенок - Лев Николаевич Толстой</a>
+                        <button class="read-btn" data-book="Котенок">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/dudochka_i_kuvshinchik" target="_blank" class="book-link">Дудочка и кувшинчик - Валентин Петрович Катаев</a>
+                        <button class="read-btn" data-book="Дудочка и кувшинчик">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/obyknovennyj-velikan" target="_blank" class="book-link">Обыкновенный великан - Валерий Владимирович Медведев</a>
+                        <button class="read-btn" data-book="Обыкновенный великан">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Секция для Советской литературы -->
+    <section id="sovyetskie">
+        <div>
+            <h2>Советская детская литература</h2>
+            <p>Произведения советских писателей.</p>
+            <ul>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/nosov-fantazery" target="_blank" class="book-link">Фантазеры - Николай Николаевич Носов</a>
+                        <button class="read-btn" data-book="Фантазеры">📖</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/nosov-stupenki" target="_blank" class="book-link">Ступеньки - Николай Николаевич Носов</a>
+                        <button class="read-btn" data-book="Ступеньки">📖</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/prishvin-jozh" target="_blank" class="book-link">Еж - Михаил Михайлович Пришвин</a>
+                        <button class="read-btn" data-book="Еж">📖</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/prishvin-berestyanaya-trubochka" target="_blank" class="book-link">Берестяная трубочка - Михаил Михайлович Пришвин</a>
+                        <button class="read-btn" data-book="Берестяная трубочка">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/marshak-detki-v-kletke" target="_blank" class="book-link">Детки в клетке - Самуил Яковлевич Маршак</a>
+                        <button class="read-btn" data-book="Детки в клетке">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://rustih.ru/samuil-marshak-rasskaz-o-neizvestnom-geroe/" target="_blank" class="book-link">Рассказ о неизвестном герое - Самуил Яковлевич Маршак</a>
+                        <button class="read-btn" data-book="Рассказ о неизвестном герое">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/stihi/dyadya-stepa" target="_blank" class="book-link">Дядя Степа - Сергей Михалков</a>
+                        <button class="read-btn" data-book="Дядя Степа">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Секция для Зарубежной литературы -->
+    <section id="zarubezhnye">
+        <div>
+            <h2>Зарубежная классика</h2>
+            <p>Известные произведения зарубежных авторов.</p>
+            <ul>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/priklyucheniya_chipollino" target="_blank" class="book-link">Приключения Чиполлино - Джанни Родари</a>
+                        <button class="read-btn" data-book="Приключения Чиполлино">📖</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/andersen_dyujmovochka" target="_blank" class="book-link">Дюймовочка - Ганс Христиан Андерсен</a>
+                        <button class="read-btn" data-book="Дюймовочка">📖</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/stojkij_olovyannyj_soldatik" target="_blank" class="book-link">Стойкий оловянный солдатик - Ганс Христиан Андерсен</a>
+                        <button class="read-btn" data-book="Стойкий оловянный солдатик">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/rikki_tikki_tavi" target="_blank" class="book-link">Рикки-Тики-Тави - Редьярд Киплинг</a>
+                        <button class="read-btn" data-book="Рикки-Тики-Тави">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://skazki.rustih.ru/redyard-kipling-kak-verblyud-poluchil-svoj-gorb/" target="_blank" class="book-link">Отчего у верблюда горб - Редьярд Киплинг</a>
+                        <button class="read-btn" data-book="Отчего у верблюда горб">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/kipling-slonenok" target="_blank" class="book-link">Слоненок - Редьярд Киплинг</a>
+                        <button class="read-btn" data-book="Слоненок">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/grimm_sladkaya_kasha" target="_blank" class="book-link">Сладкая каша - Братья Гримм</a>
+                        <button class="read-btn" data-book="Сладкая каша">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/sharl-perro-krasnaya-shapochka" target="_blank" class="book-link">Красная шапочка - Шарль Перро</a>
+                        <button class="read-btn" data-book="Красная шапочка">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Секция для книг про животных -->
+    <section id="pro-zhivotnyh">
+        <div>
+            <h2>Сказки про животных</h2>
+            <p>Замечательные истории о животных.</p>
+            <ul>
+                <li>
+                    <div class="book-item">
+                        <a href="https://ilibrary.ru/text/4534/p.1/index.html" target="_blank" class="book-link">Серая шейка - Дмитрий Наркисович Мамин-Сибиряк</a>
+                        <button class="read-btn" data-book="Серая шейка">📖</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/bianki-kak-muravishka-domoj-speshil" target="_blank" class="book-link">Как муравьишка домой спешил - Виталий Валентинович Бианки</a>
+                        <button class="read-btn" data-book="Как муравьишка домой спешил">📖</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/arishka-trusishka" target="_blank" class="book-link">Аришка трусишка - Виталий Валентинович Бианки</a>
+                        <button class="read-btn" data-book="Аришка трусишка">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/bianki-kto-chem-pojot" target="_blank" class="book-link">Кто чем поет - Виталий Валентинович Бианки</a>
+                        <button class="read-btn" data-book="Кто чем поет">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 V labs Школа программирования </p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
