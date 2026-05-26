@@ -84,21 +84,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.stopPropagation();
                 
                 const title = this.getAttribute('data-book');
-                const currentReadBooks = JSON.parse(localStorage.getItem('readBooks') || '[]');
-                const isRead = currentReadBooks.includes(title);
+                const isRead = readBooks.includes(title);
                 
                 if (isRead) {
                     // Убираем из прочитанных
-                    const index = currentReadBooks.indexOf(title);
-                    currentReadBooks.splice(index, 1);
+                    const index = readBooks.indexOf(title);
+                    readBooks.splice(index, 1);
                     markAsRead(this, false);
                 } else {
                     // Добавляем в прочитанные
-                    currentReadBooks.push(title);
+                    readBooks.push(title);
                     markAsRead(this, true);
                 }
                 
-                localStorage.setItem('readBooks', JSON.stringify(currentReadBooks));
+                localStorage.setItem('readBooks', JSON.stringify(readBooks));
                 updateReadingStats();
             });
         });
@@ -108,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
         bookLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 // Позволяем нормальное поведение ссылки
+                // Можно добавить аналитику здесь, если нужно
             });
         });
         
@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Поиск по книгам
     function createSearchBox() {
+        // HTML: input + кнопка очистки
         const searchHTML = `
             <div class="search-container" style="position:relative;">
                 <input type="text" id="bookSearch" placeholder="Поиск книг...">
@@ -172,54 +173,57 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
 
         const firstSection = document.querySelector('section');
-        if (firstSection) {
-            firstSection.insertAdjacentHTML('beforebegin', searchHTML);
+        firstSection.insertAdjacentHTML('beforebegin', searchHTML);
 
-            const searchInput = document.getElementById('bookSearch');
-            const clearBtn = document.getElementById('clearSearch');
+        // Обработчик поиска
+        const searchInput = document.getElementById('bookSearch');
+        const clearBtn = document.getElementById('clearSearch');
 
-            function filterBooks() {
-                const searchTerm = searchInput.value.toLowerCase();
-                const bookItems = document.querySelectorAll('li');
+        function filterBooks() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const bookItems = document.querySelectorAll('li');
 
-                bookItems.forEach(item => {
-                    const bookTitle = item.querySelector('.book-link')?.textContent.toLowerCase() || '';
-                    if (!searchTerm || bookTitle.includes(searchTerm)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            }
-
-            searchInput.addEventListener('input', filterBooks);
-
-            clearBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                searchInput.value = '';
-                filterBooks();
-                searchInput.focus();
-            });
-
-            searchInput.addEventListener('focus', function() {
-                this.classList.add('focused');
-            });
-
-            searchInput.addEventListener('blur', function() {
-                this.classList.remove('focused');
+            bookItems.forEach(item => {
+                const bookTitle = item.querySelector('.book-link')?.textContent.toLowerCase() || '';
+                if (!searchTerm || bookTitle.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
             });
         }
+
+        searchInput.addEventListener('input', filterBooks);
+
+        // Очистка поля поиска по кнопке
+        clearBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            searchInput.value = '';
+            filterBooks();
+            searchInput.focus();
+        });
+
+        // Визуальные состояния (фокус/blur) — управляем через CSS, но добавим небольшой accessibility-акцент
+        searchInput.addEventListener('focus', function() {
+            this.classList.add('focused');
+        });
+
+        searchInput.addEventListener('blur', function() {
+            this.classList.remove('focused');
+        });
     }
     
     // Создаем поиск
     createSearchBox();
 
-    // Тема: переключатель день/ночь
+    // Тема: переключатель день/ночь (сохранение в localStorage)
     function initThemeToggle() {
         const toggle = document.getElementById('themeToggle');
         if (!toggle) return;
 
+        // More detailed icons (outline vs filled subtle variants)
         const sunSvg = `
+            <!-- Sun (filled with outline rays) -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="4" fill="currentColor" opacity="0.95"></circle>
                 <g stroke="currentColor" stroke-width="1.4">
@@ -235,22 +239,25 @@ document.addEventListener('DOMContentLoaded', function() {
             </svg>`;
 
         const moonSvg = `
+            <!-- Moon (outline crescent) -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="none"></path>
                 <path d="M21 12.79A9 9 0 1111.21 3" fill="currentColor" opacity="0.06"></path>
             </svg>`;
 
         function applyTheme(theme) {
+            // animate theme transition by toggling a helper class
             document.documentElement.classList.add('theme-transition');
             window.setTimeout(() => document.documentElement.classList.remove('theme-transition'), 500);
 
+            // Always set explicit data-theme attribute to avoid being overridden by prefers-color-scheme
             document.documentElement.setAttribute('data-theme', theme);
             if (theme === 'dark') {
-                toggle.innerHTML = sunSvg;
+                toggle.innerHTML = sunSvg; // show sun to indicate switch to light
                 toggle.title = 'Переключиться на светлую тему';
                 toggle.setAttribute('aria-pressed', 'true');
             } else {
-                toggle.innerHTML = moonSvg;
+                toggle.innerHTML = moonSvg; // show moon to indicate switch to dark
                 toggle.title = 'Переключиться на тёмную тему';
                 toggle.setAttribute('aria-pressed', 'false');
             }
@@ -258,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const saved = localStorage.getItem('theme');
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const initial = saved || (prefersDark ? 'dark' : 'light');
+    const initial = saved || (prefersDark ? 'dark' : 'light');
         applyTheme(initial);
 
         toggle.addEventListener('click', function() {
@@ -271,75 +278,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Инициализируем переключатель темы
     initThemeToggle();
-
-    // ========== HAMBURGER MENU ==========
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const menuDropdown = document.getElementById('menuDropdown');
-
-    if (hamburgerBtn && menuDropdown) {
-        // Переключение меню
-        hamburgerBtn.addEventListener('click', () => {
-            hamburgerBtn.classList.toggle('active');
-            menuDropdown.classList.toggle('active');
-        });
-
-        // Закрытие меню при клике вне его
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.hamburger-menu')) {
-                hamburgerBtn.classList.remove('active');
-                menuDropdown.classList.remove('active');
-            }
-        });
-    }
-
-    // ========== ОБНУЛЕНИЕ ВСЕХ КНИГ ==========
-    const resetBtn = document.getElementById('resetBtn');
-
-    if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            if (confirm('⚠️ ВЫ УВЕРЕНЫ?\n\nВсе прогрессы по прочитанным книгам будут полностью обнулены.\n\nЭто действие нельзя отменить!')) {
-                if (confirm('Вы действительно хотите обнулить ВСЁ? Последнее подтверждение.')) {
-                    
-                    // Снимаем все отметки "Прочитано"
-                    const readButtons = document.querySelectorAll('.read-btn');
-                    readButtons.forEach(button => {
-                        button.classList.remove('read');
-                        button.textContent = '📖';
-                        button.title = 'Отметить как "Прочитано"';
-                        const listItem = button.closest('li');
-                        if (listItem) {
-                            listItem.classList.remove('read');
-                        }
-                    });
-                    
-                    // Очищаем только данные о книгах, сохраняем тему
-                    const currentTheme = localStorage.getItem('theme');
-                    localStorage.clear();
-                    if (currentTheme) {
-                        localStorage.setItem('theme', currentTheme);
-                    }
-                    
-                    // Обновляем счётчик
-                    const readCount = document.querySelector('.read-count');
-                    if (readCount) {
-                        readCount.textContent = '0';
-                    }
-                    
-                    // Обновляем прогресс-бар
-                    const progressFill = document.querySelector('.progress-fill');
-                    if (progressFill) {
-                        progressFill.style.width = '0%';
-                    }
-                    
-                    // Закрываем меню
-                    if (hamburgerBtn) hamburgerBtn.classList.remove('active');
-                    if (menuDropdown) menuDropdown.classList.remove('active');
-                    
-                    alert('✅ Все данные успешно обнулены!');
-                }
-            }
-        });
-    }
     
     console.log('📚 Детская библиотека загружена!');
 });
