@@ -342,3 +342,42 @@ window.addEventListener('DOMContentLoaded', () => {
         themeToggle.innerHTML = '☀️ Светлая тема';
     }
 });
+
+
+
+resetAllBtn.addEventListener('click', () => {
+    if (confirm('⚠️ ВЫ УВЕРЕНЫ?\n\nВсе прогрессы по прочитанным книгам будут полностью обнулены.\n\nЭто действие нельзя отменить!')) {
+        if (confirm('Вы действительно хотите обнулить ВСЁ? Последнее подтверждение.')) {
+            // Снимаем все чекбоксы
+            const checkboxes = document.querySelectorAll('.book-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Очищаем localStorage
+            localStorage.clear();
+            
+            // Обновляем счётчик
+            const counter = document.getElementById('bookCounter');
+            if (counter) {
+                counter.textContent = '0';
+            }
+            
+            // Обновляем прогресс-бар (если есть)
+            const progressBar = document.querySelector('.progress');
+            if (progressBar) {
+                progressBar.style.width = '0%';
+            }
+            
+            const progressText = document.querySelector('.progress-text');
+            if (progressText) {
+                progressText.textContent = '0/0 книг прочитано';
+            }
+            
+            // Закрываем меню
+            sideMenu.classList.remove('open');
+            
+            alert('✅ Все данные успешно обнулены!');
+        }
+    }
+});
