@@ -303,12 +303,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Обнуление всех книг
-resetBtn.addEventListener('click', () => {
-    if (confirm('Вы уверены, что хотите обнулить количество всех прочитанных книг?')) {
-        books.forEach(book => {
-            book.count = 0;
-        });
+
         saveBooks();
         renderBooks();
         updateStats();
