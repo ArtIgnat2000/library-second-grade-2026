@@ -2,238 +2,322 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Библиотека. Иду во 2 класс</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Библиотека. Иду во 2 класс</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Бутерброд (Панель навигации) -->
+    <nav>
+        <ul>
+            <li><a href="#pushkin">А.С. Пушкин</a></li>
+            <li><a href="#mamin-sibiryak">Д.Н. Мамин-Сибиряк</a></li>
+            <li><a href="#tolstoy">Л.Н. Толстой</a></li>
+            <li><a href="#nosov">Н.Н. Носов</a></li>
+            <li><a href="#kataev">В.П. Катаев</a></li>
+            <li><a href="#prishvin">М.М. Пришвин</a></li>
+            <li><a href="#bianki">В.В. Бианки</a></li>
+            <li><a href="#rodari">Дж. Родари</a></li>
+            <li><a href="#medvedev">В.В. Медведев</a></li>
+            <li><a href="#andersen">Г.-X. Андерсен</a></li>
+            <li><a href="#kipling">Р. Киплинг</a></li>
+            <li><a href="#grimms">Братья Гримм</a></li>
+            <li><a href="#perrot">Ш. Перро</a></li>
+            <li><a href="#chukovsky">К.И. Чуковский</a></li>
+            <li><a href="#marshak">С.Я. Маршак</a></li>
+            <li><a href="#mikhalkov">С.В. Михалков</a></li>
+        </ul>
+    </nav>
 
-    <!-- 📱 Кнопка гамбургер-меню -->
-    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Открыть меню">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-    </button>
+    <header>
+        <h1>📚 Библиотека. Иду во 2 класс</h1>
+        <!-- Кнопка сброса счетчиков -->
+        <button id="resetAllBtn" class="reset-all-btn" aria-label="Сбросить все счетчики" title="Сбросить все счетчики">🔄 Сбросить всё</button>
+        <button id="themeToggle" class="theme-toggle" aria-label="Переключить тему" title="Переключить тему"></button>
+    </header>
 
-    <!-- 🍽️ Гамбургер-меню (боковое меню) -->
-    <div class="side-menu" id="sideMenu">
-        <div class="side-menu-header">
-            <h2 class="side-menu-title">Меню</h2>
-            <button class="side-menu-close" id="closeMenuBtn" aria-label="Закрыть меню">✕</button>
+    <!-- Разделы с книгами по авторам -->
+    <section id="pushkin">
+        <div>
+            <h2>Александр Сергеевич Пушкин</h2>
+            <ul>
+                <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/pushkin_skazka_o_mjortvoj_carevne_i_o_semi_bogatyryakh" target="_blank" class="book-link">Сказка о мёртвой царевне и семи богатырях</a>
+                        <button class="read-btn" data-book="Сказка о мёртвой царевне и семи богатырях">📖</button>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="side-menu-body">
-            <!-- Сюда перемещена кнопка "Тема" (светлая/тёмная) -->
-            <button class="theme-toggle side-menu-item" id="themeToggleBtn" aria-label="Переключить тему">
-                <svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-                <span class="theme-text">Светлая тема</span>
-            </button>
-            <!-- 🆕 Новая кнопка для обнуления количества прочитанных книг -->
-            <button class="reset-stats-btn side-menu-item" id="resetStatsBtn">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 6h18"></path>
-                    <path d="M8 6v-3h8v3"></path>
-                    <path d="M19 6l-1 14H6L5 6"></path>
-                    <path d="M10 11v6"></path>
-                    <path d="M14 11v6"></path>
-                </svg>
-                <span>Сбросить весь прогресс</span>
-            </button>
+    </section>
+
+    <section id="mamin-sibiryak">
+        <div>
+            <h2>Дмитрий Наркисович Мамин-Сибиряк</h2>
+            <ul>
+                <li>
+                    <div class="book-item">
+                        <a href="https://ilibrary.ru/text/4534/p.1/index.html" target="_blank" class="book-link">Серая шейка</a>
+                        <button class="read-btn" data-book="Серая шейка">📖</button>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </div>
+    </section>
 
-    <!-- Оверлей (затемнение фона) -->
-    <div class="menu-overlay" id="menuOverlay"></div>
+    <section id="tolstoy">
+        <div>
+            <h2>Лев Николаевич Толстой</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://skazki.rustih.ru/lev-tolstoj-tri-medvedya/" target="_blank" class="book-link">Три медведя</a>
+                        <button class="read-btn" data-book="Три медведя">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/lev-tolstoj-kotenok" target="_blank" class="book-link">Котенок</a>
+                        <button class="read-btn" data-book="Котенок">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-    <!-- Основной контент страницы (всё, что было ранее) -->
-    <main class="main-content">
-        <!-- Заголовок -->
-        <header>
-            <h1>📚 Библиотека</h1>
-            <p>Иду во 2 класс</p>
-            <!-- Счётчик прочитанных книг -->
-            <div class="stats-counter" id="statsCounter">
-                <span class="stats-label">Прочитано:</span>
-                <span class="stats-count" id="readCount">0</span>
-                <span class="stats-total" id="totalCount">/ 22</span>
-            </div>
-        </header>
+    <section id="nosov">
+        <div>
+            <h2>Николай Николаевич Носов</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/nosov-fantazery" target="_blank" class="book-link">Фантазёры</a>
+                        <button class="read-btn" data-book="Фантазёры">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/nosov-stupenki" target="_blank" class="book-link">Ступеньки</a>
+                        <button class="read-btn" data-book="Ступеньки">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-        <!-- Навигация -->
-        <nav>
-            <a href="#classics">Классика</a>
-            <a href="#soviet">Советские</a>
-            <a href="#foreign">Зарубежные</a>
-            <a href="#animals">Про животных</a>
-        </nav>
+    <section id="kataev">
+        <div>
+            <h2>Валентин Петрович Катаев</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/dudochka_i_kuvshinchik" target="_blank" class="book-link">Дудочка и кувшинчик</a>
+                        <button class="read-btn" data-book="Дудочка и кувшинчик">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-        <!-- Классика -->
-        <section id="classics">
-            <div class="section-header">
-                <h2>📖 Классическая детская литература</h2>
-                <p>Произведения русских классиков для начальных классов.</p>
-            </div>
-            <div class="books-grid">
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/pushkin-skazka_o_mertvoj_carevne_i_semi_bogatyryah">Сказка о мертвой царевне и семи богатырях</span>
-                    <span class="book-author">Александр Сергеевич Пушкин</span>
-                    <button class="read-btn" data-book="Сказка о мертвой царевне и семи богатырях">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://skazki.rustih.ru/tri-medvedya/">Три медведя</span>
-                    <span class="book-author">Лев Николаевич Толстой</span>
-                    <button class="read-btn" data-book="Три медведя">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/tolstoj_kotenok">Котенок</span>
-                    <span class="book-author">Лев Николаевич Толстой</span>
-                    <button class="read-btn" data-book="Котенок">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/kataev_dudochka_i_kuvshinchik">Дудочка и кувшинчик</span>
-                    <span class="book-author">Валентин Петрович Катаев</span>
-                    <button class="read-btn" data-book="Дудочка и кувшинчик">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/medvedev_obyknovennyj_velikan">Обыкновенный великан</span>
-                    <span class="book-author">Валерий Владимирович Медведев</span>
-                    <button class="read-btn" data-book="Обыкновенный великан">📚</button>
-                </div>
-            </div>
-        </section>
+    <section id="prishvin">
+        <div>
+            <h2>Михаил Михайлович Пришвин</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/prishvin-jozh" target="_blank" class="book-link">Ёж</a>
+                        <button class="read-btn" data-book="Ёж">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/prishvin-berestyanaya-trubochka" target="_blank" class="book-link">Берестяная трубочка</a>
+                        <button class="read-btn" data-book="Берестяная трубочка">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-        <!-- Советские -->
-        <section id="soviet">
-            <div class="section-header">
-                <h2>⭐ Советская детская литература</h2>
-                <p>Произведения советских писателей.</p>
-            </div>
-            <div class="books-grid">
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/nosov_fantazery">Фантазеры</span>
-                    <span class="book-author">Николай Николаевич Носов</span>
-                    <button class="read-btn" data-book="Фантазеры">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/nosov_stupenki">Ступеньки</span>
-                    <span class="book-author">Николай Николаевич Носов</span>
-                    <button class="read-btn" data-book="Ступеньки">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/prishvin_ezh">Еж</span>
-                    <span class="book-author">Михаил Михайлович Пришвин</span>
-                    <button class="read-btn" data-book="Еж">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/prishvin_berestyanaya_trubochka">Берестяная трубочка</span>
-                    <span class="book-author">Михаил Михайлович Пришвин</span>
-                    <button class="read-btn" data-book="Берестяная трубочка">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/marshak_detki_v_kletke">Детки в клетке</span>
-                    <span class="book-author">Самуил Яковлевич Маршак</span>
-                    <button class="read-btn" data-book="Детки в клетке">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://rustih.ru/samuil-marshak-rasskaz-o-neizvestnom-geroe/">Рассказ о неизвестном герое</span>
-                    <span class="book-author">Самуил Яковлевич Маршак</span>
-                    <button class="read-btn" data-book="Рассказ о неизвестном герое">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/mikhalkov_djadja_stjopa">Дядя Степа</span>
-                    <span class="book-author">Сергей Михалков</span>
-                    <button class="read-btn" data-book="Дядя Степа">📚</button>
-                </div>
-            </div>
-        </section>
+    <section id="bianki">
+        <div>
+            <h2>Виталий Валентинович Бианки</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/bianki-kak-muravishka-domoj-speshil" target="_blank" class="book-link">Как муравьишка домой спешил</a>
+                        <button class="read-btn" data-book="Как муравьишка домой спешил">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/arishka-trusishka" target="_blank" class="book-link">Аришка-трусишка</a>
+                        <button class="read-btn" data-book="Аришка-трусишка">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/bianki-kto-chem-pojot" target="_blank" class="book-link">Кто чем поёт</a>
+                        <button class="read-btn" data-book="Кто чем поёт">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-        <!-- Зарубежные -->
-        <section id="foreign">
-            <div class="section-header">
-                <h2>🌍 Зарубежная классика</h2>
-                <p>Известные произведения зарубежных авторов.</p>
-            </div>
-            <div class="books-grid">
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/rodari_priklyucheniya_chipollino">Приключения Чиполлино</span>
-                    <span class="book-author">Джанни Родари</span>
-                    <button class="read-btn" data-book="Приключения Чиполлино">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/andersen_dyujmovochka">Дюймовочка</span>
-                    <span class="book-author">Ганс Христиан Андерсен</span>
-                    <button class="read-btn" data-book="Дюймовочка">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/andersen_stojkij_olovyannyj_soldatik">Стойкий оловянный солдатик</span>
-                    <span class="book-author">Ганс Христиан Андерсен</span>
-                    <button class="read-btn" data-book="Стойкий оловянный солдатик">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/kipling_rikki_tikki_tavi">Рикки-Тики-Тави</span>
-                    <span class="book-author">Редьярд Киплинг</span>
-                    <button class="read-btn" data-book="Рикки-Тики-Тави">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://skazki.rustih.ru/otchego-u-verblyuda-gorb/">Отчего у верблюда горб</span>
-                    <span class="book-author">Редьярд Киплинг</span>
-                    <button class="read-btn" data-book="Отчего у верблюда горб">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/kipling_slononok">Слоненок</span>
-                    <span class="book-author">Редьярд Киплинг</span>
-                    <button class="read-btn" data-book="Слоненок">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/grimm_sladkaya_kasha">Сладкая каша</span>
-                    <span class="book-author">Братья Гримм</span>
-                    <button class="read-btn" data-book="Сладкая каша">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/perro_krasnaya_shapochka">Красная шапочка</span>
-                    <span class="book-author">Шарль Перро</span>
-                    <button class="read-btn" data-book="Красная шапочка">📚</button>
-                </div>
-            </div>
-        </section>
+    <section id="rodari">
+        <div>
+            <h2>Джанни Родари</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/priklyucheniya_chipollino" target="_blank" class="book-link">Приключения Чиполлино</a>
+                        <button class="read-btn" data-book="Приключения Чиполлино">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-        <!-- Про животных -->
-        <section id="animals">
-            <div class="section-header">
-                <h2>🐾 Сказки про животных</h2>
-                <p>Замечательные истории о животных.</p>
-            </div>
-            <div class="books-grid">
-                <div class="book-item">
-                    <span class="book-link" data-url="https://ilibrary.ru/text/1171/p.1/index.html">Серая шейка</span>
-                    <span class="book-author">Дмитрий Наркисович Мамин-Сибиряк</span>
-                    <button class="read-btn" data-book="Серая шейка">📚</button>
-                </div>
-                <div class="book-item">
-                    <span class="book-link" data-url="https://nukadeti.ru/skazki/bianki_kak_muravishka_domoj_speshil">Как муравьишка домой спешил</span>
-                    <span class="book-author">Виталий Валентинович Бианки</span>
-                    <button class="read-btn" data-book="Как муравьишка домой спешил">📚</button>
-                </div>
-            </div>
-        </section>
+    <section id="medvedev">
+        <div>
+            <h2>Валерий Владимирович Медведев</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/obyknovennyj-velikan" target="_blank" class="book-link">Обыкновенный великан</a>
+                        <button class="read-btn" data-book="Обыкновенный великан">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-        <!-- Подвал -->
-        <footer>
-            <p>📚 Летняя библиотека • Иду во 2 класс</p>
-        </footer>
-    </main>
+    <section id="andersen">
+        <div>
+            <h2>Ганс Христиан Андерсен</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/andersen_dyujmovochka" target="_blank" class="book-link">Дюймовочка</a>
+                        <button class="read-btn" data-book="Дюймовочка">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/stojkij_olovyannyj_soldatik" target="_blank" class="book-link">Стойкий оловянный солдатик</a>
+                        <button class="read-btn" data-book="Стойкий оловянный солдатик">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="kipling">
+        <div>
+            <h2>Редьярд Киплинг</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/rikki_tikki_tavi" target="_blank" class="book-link">Рикки-Тикки-Тави</a>
+                        <button class="read-btn" data-book="Рикки-Тикки-Тави">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://skazki.rustih.ru/redyard-kipling-kak-verblyud-poluchil-svoj-gorb/" target="_blank" class="book-link">Отчего у верблюда горб</a>
+                        <button class="read-btn" data-book="Отчего у верблюда горб">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/kipling-slonenok" target="_blank" class="book-link">Слонёнок</a>
+                        <button class="read-btn" data-book="Слонёнок">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="grimms">
+        <div>
+            <h2>Братья Гримм</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/grimm_sladkaya_kasha" target="_blank" class="book-link">Сладкая каша</a>
+                        <button class="read-btn" data-book="Сладкая каша">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="perrot">
+        <div>
+            <h2>Шарль Перро</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/sharl-perro-krasnaya-shapochka" target="_blank" class="book-link">Красная шапочка</a>
+                        <button class="read-btn" data-book="Красная шапочка">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="chukovsky">
+        <div>
+            <h2>Корней Иванович Чуковский</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://rustih.ru/kornej-chukovskij-ajbolit/" target="_blank" class="book-link">Доктор Айболит</a>
+                        <button class="read-btn" data-book="Доктор Айболит">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="marshak">
+        <div>
+            <h2>Самуил Яковлевич Маршак</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://rustih.ru/samuil-marshak-rasskaz-o-neizvestnom-geroe/" target="_blank" class="book-link">Рассказ о неизвестном герое</a>
+                        <button class="read-btn" data-book="Рассказ о неизвестном герое">📖</button>
+                    </div>
+                </li>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/skazki/marshak-detki-v-kletke" target="_blank" class="book-link">Детки в клетке</a>
+                        <button class="read-btn" data-book="Детки в клетке">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="mikhalkov">
+        <div>
+            <h2>Сергей Михалков</h2>
+            <ul>
+                 <li>
+                    <div class="book-item">
+                        <a href="https://nukadeti.ru/stihi/dyadya-stepa" target="_blank" class="book-link">Дядя Стёпа</a>
+                        <button class="read-btn" data-book="Дядя Стёпа">📖</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Библиотека "Иду во 2 класс". Список литературы на лето.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
